@@ -20,7 +20,7 @@
 
 - (void)assembleSentence {
     
-    //
+    [self setSentence:[NSString stringWithFormat:@"%@%@", [self.words componentsJoinedByString:@" "], self.punctuation]];
 }
 
 - (BOOL)validWord:(NSString *)word {
@@ -40,7 +40,10 @@
 
 - (void)addWord:(NSString *)word {
     
-    //
+    if (!word) return;
+    
+    [self.words addObject:word];
+    [self assembleSentence];
 }
 
 - (void)addWords:(NSArray *)words withPunctuation:(NSString *)punctuation {
