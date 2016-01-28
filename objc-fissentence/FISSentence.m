@@ -55,32 +55,33 @@
 
 - (void)addWords:(NSArray *)words withPunctuation:(NSString *)punctuation {
     
-    if (!words || !words.count) return;
-    
-    if (![self validPunctuation:punctuation]) return;
-    
-    NSString *word;
-    for (NSUInteger i = 0; i < words.count; i++) {
-        word = [words objectAtIndex:i];
-        if ([self validWord:word]) {
-            [self.words addObject:word];
+    if (words && words.count && [self validPunctuation:punctuation]) {
+        NSString *word;
+        for (NSUInteger i = 0; i < words.count; i++) {
+            word = [words objectAtIndex:i];
+            if ([self validWord:word]) {
+                [self.words addObject:word];
+            }
         }
+        [self setPunctuation:punctuation];
     }
-    [self setPunctuation:punctuation];
     [self assembleSentence];
 }
 
 - (void)removeWordAtIndex:(NSUInteger)index {
     
-    if ([self validIndex:index]) return;
-    
-    [self.words removeObjectAtIndex:index];
+    if ([self validIndex:index]) {
+        [self.words removeObjectAtIndex:index];
+    }
     [self assembleSentence];
 }
 
 - (void)insertWord:(NSString *)word atIndex:(NSUInteger)index {
     
-    //
+    if ([self validWord:word] && [self validIndex:index]) {
+        [self.words insertObject:word atIndex:index];
+    }
+    [self assembleSentence];
 }
 
 - (void)replacePunctuationWithPunctuation:(NSString *)punctuation {
