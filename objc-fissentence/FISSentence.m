@@ -48,7 +48,11 @@
 
 - (void)addWords:(NSArray *)words withPunctuation:(NSString *)punctuation {
     
-    //
+    if (!words || !words.count) return;
+    
+    [self.words addObjectsFromArray:words];
+    [self setPunctuation:punctuation];
+    [self assembleSentence];
 }
 
 - (void)removeWordAtIndex:(NSUInteger)index {
