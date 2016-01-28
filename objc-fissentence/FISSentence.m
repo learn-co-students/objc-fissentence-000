@@ -42,7 +42,7 @@
 
 - (BOOL)validIndex:(NSUInteger)index {
     
-    return NO;
+    return (index >= self.words.count);
 }
 
 - (void)addWord:(NSString *)word {
@@ -72,7 +72,7 @@
 
 - (void)removeWordAtIndex:(NSUInteger)index {
     
-    if (index >= self.words.count) return;
+    if ([self validIndex:index]) return;
     
     [self.words removeObjectAtIndex:index];
     [self assembleSentence];
