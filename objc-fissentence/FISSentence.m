@@ -25,7 +25,7 @@
 
 - (BOOL)validWord:(NSString *)word {
     
-    return NO;
+    return (word && ![word isEqualToString:@""] && ![word isEqualToString:@" "]);
 }
 
 - (BOOL)validPunctuation:(NSString *)punctuation {
@@ -40,7 +40,7 @@
 
 - (void)addWord:(NSString *)word {
     
-    if (word && ![word isEqualToString:@""] && ![word isEqualToString:@" "]) {
+    if ([self validWord:word]) {
         [self.words addObject:word];
     }
     [self assembleSentence];
