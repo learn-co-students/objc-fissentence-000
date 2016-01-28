@@ -50,6 +50,13 @@
     
     if (!words || !words.count) return;
     
+    NSString *validPunctuation = @".?!,;:—";
+    for (NSUInteger i = 0; i < punctuation.length; i++) {
+        if (![validPunctuation containsString:[NSString stringWithFormat:@"%c", [punctuation characterAtIndex:i]]]) {
+            return;
+        }
+    }
+    
     [self.words addObjectsFromArray:words];
     [self setPunctuation:punctuation];
     [self assembleSentence];
