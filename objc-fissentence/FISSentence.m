@@ -40,9 +40,9 @@
 
 - (void)addWord:(NSString *)word {
     
-    if (!word) return;
-    
-    [self.words addObject:word];
+    if (word && ![word isEqualToString:@""] && ![word isEqualToString:@" "]) {
+        [self.words addObject:word];
+    }
     [self assembleSentence];
 }
 
