@@ -57,7 +57,13 @@
         }
     }
     
-    [self.words addObjectsFromArray:words];
+    NSString *word;
+    for (NSUInteger i = 0; i < words.count; i++) {
+        word = [words objectAtIndex:i];
+        if ([self validWord:word]) {
+            [self.words addObject:word];
+        }
+    }
     [self setPunctuation:punctuation];
     [self assembleSentence];
 }
