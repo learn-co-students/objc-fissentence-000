@@ -94,7 +94,10 @@
 
 - (void)replaceWordAtIndex:(NSUInteger)index withWord:(NSString *)word {
     
-    //
+    if ([self validWord:word] && [self validIndex:index]) {
+        [self.words replaceObjectAtIndex:index withObject:word];
+    }
+    [self assembleSentence];
 }
 
 @end
