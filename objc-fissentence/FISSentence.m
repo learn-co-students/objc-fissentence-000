@@ -30,7 +30,14 @@
 
 - (BOOL)validPunctuation:(NSString *)punctuation {
     
-    return NO;
+    NSString *validPunctuation = @".?!,;:—";
+    for (NSUInteger i = 0; i < punctuation.length; i++) {
+        if (![validPunctuation containsString:[NSString stringWithFormat:@"%c", [punctuation characterAtIndex:i]]]) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (BOOL)validIndex:(NSUInteger)index {
@@ -50,12 +57,7 @@
     
     if (!words || !words.count) return;
     
-    NSString *validPunctuation = @".?!,;:—";
-    for (NSUInteger i = 0; i < punctuation.length; i++) {
-        if (![validPunctuation containsString:[NSString stringWithFormat:@"%c", [punctuation characterAtIndex:i]]]) {
-            return;
-        }
-    }
+    if (![self validPunctuation:punctuation]) return;
     
     NSString *word;
     for (NSUInteger i = 0; i < words.count; i++) {
