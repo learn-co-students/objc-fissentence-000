@@ -86,7 +86,10 @@
 
 - (void)replacePunctuationWithPunctuation:(NSString *)punctuation {
     
-    //
+    if ([self validPunctuation:punctuation]) {
+        [self setPunctuation:punctuation];
+    }
+    [self assembleSentence];
 }
 
 - (void)replaceWordAtIndex:(NSUInteger)index withWord:(NSString *)word {
