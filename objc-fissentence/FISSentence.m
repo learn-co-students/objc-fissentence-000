@@ -42,7 +42,7 @@
 
 - (BOOL)validIndex:(NSUInteger)index {
     
-    return (index >= self.words.count);
+    return (index < self.words.count);
 }
 
 - (void)addWord:(NSString *)word {
