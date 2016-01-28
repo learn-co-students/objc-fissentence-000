@@ -30,6 +30,8 @@
 
 - (BOOL)validPunctuation:(NSString *)punctuation {
     
+    if (!punctuation || !punctuation.length) return NO;
+    
     NSString *validPunctuation = @".?!,;:—";
     for (NSUInteger i = 0; i < punctuation.length; i++) {
         if (![validPunctuation containsString:[NSString stringWithFormat:@"%c", [punctuation characterAtIndex:i]]]) {
