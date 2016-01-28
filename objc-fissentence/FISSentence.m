@@ -72,7 +72,10 @@
 
 - (void)removeWordAtIndex:(NSUInteger)index {
     
-    //
+    if (index >= self.words.count) return;
+    
+    [self.words removeObjectAtIndex:index];
+    [self assembleSentence];
 }
 
 - (void)insertWord:(NSString *)word atIndex:(NSUInteger)index {
